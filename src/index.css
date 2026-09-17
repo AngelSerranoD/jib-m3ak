@@ -1,0 +1,77 @@
+/* Jib M3ak · Copyright (c) 2026 Ángel Serrano Domínguez. Todos los derechos reservados. */
+
+/* Naskh: es la tipografía que dibuja bien el tashkil (las vocales de la darija).
+   Solo el subconjunto árabe; el resto de la app usa la fuente del sistema. */
+@import '@fontsource/noto-naskh-arabic/arabic-400.css';
+@import '@fontsource/noto-naskh-arabic/arabic-600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: theme('colors.crema');
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply bg-crema font-sans text-cafe antialiased;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* En darija todo el texto va en Naskh y con más aire: el tashkil sube y baja
+     de la línea y, apretado, se convierte en una mancha. */
+  html[lang='ar'] body {
+    @apply font-arabe;
+    line-height: 1.9;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input {
+    font-size: 17px; /* por debajo de 16 px Safari hace zoom al enfocar */
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.nogal');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .tarjeta {
+    @apply rounded-3xl border border-avena/50 bg-leche shadow-arcilla;
+  }
+
+  .campo {
+    @apply w-full rounded-2xl border border-avena bg-leche px-4 py-3 text-cafe shadow-hundido placeholder:text-canela/80 focus:border-nogal focus:outline-none;
+  }
+
+  .boton {
+    @apply rounded-2xl bg-nogal px-5 py-3 font-semibold text-crema shadow-arcilla active:translate-y-px active:shadow-hundido disabled:opacity-40 disabled:shadow-none;
+  }
+
+  .boton-suave {
+    @apply rounded-2xl border border-avena bg-leche px-5 py-3 font-semibold text-nogal shadow-arcilla active:translate-y-px active:shadow-hundido;
+  }
+
+  /* Las flechas apuntan al carrito: en darija el carrito está al otro lado. */
+  [dir='rtl'] .voltear {
+    transform: scaleX(-1);
+  }
+
+  .sin-seleccion {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
