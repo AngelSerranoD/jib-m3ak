@@ -102,6 +102,8 @@ const SUSTANTIVOS = [
   ['Gamba', 'كْرِيفِيتْ', 'f/m'],
   ['Calamar', 'كَالَامَارْ', 'm/m'],
   ['Huevo', 'بِيضْ', 'm/m'],
+  ['Cabra', 'مَاعَزْ', 'f/m'],
+  ['Oveja', 'نْعْجَة', 'f/f'],
 
   // Lácteos
   ['Leche', 'حْلِيبْ', 'f/m'],
